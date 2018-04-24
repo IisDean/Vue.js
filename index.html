@@ -1,0 +1,67 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Vue</title>
+        <meta id="wxKeywords" name="Keywords" content="<keywords />">
+        <meta id="wxDescription" name="Description" content="<description />" />
+        <meta name="apple-touch-fullscreen" content="YES" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+        <meta http-equiv="Expires" content="-1" />
+        <meta http-equiv="pragram" content="no-cache" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+        <!--本页CSS样式开始-->
+        <link rel="stylesheet" type="text/css" href="Css/index.css"/>
+    </head>
+    <body>
+        
+        <div id="app">
+            <p>{{ reversedMessage() }}</p>
+            <button v-on:click="a ++">点击</button>
+            <p>Using mustaches: {{ rawHtml }}</p>
+            <p>Using v-html directive: <span v-html="rawHtml"></span></p>
+        </div>
+
+        <div id="apple">
+            <p v-bind:class="classObj">{{ number }}</p>
+            <button v-bind:disabled="isHidden">{{ number }}</button>
+            <a v-bind:href="href">这里去往百度</a>
+        </div>
+
+    </div>
+    </body>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+    <script type="text/javascript">
+        
+        var obj = {
+            message : 'hello',
+            rawHtml : "<span style='color: red;'>你好啊</span>",
+        };
+        var vm = new Vue({
+            el : '#app',
+            data : obj,
+            methods: {
+                reversedMessage : function () {
+                    // `this` 指向 vm 实例
+                    return this.message.split('').reverse().join('');
+                }
+            }
+        });
+
+        var vm2 = new Vue({
+            el : '#apple',
+            data : {
+                isHidden : true,
+                number : 1,
+                href : 'https:www.baidu.com',
+                classObj : {
+                    active : true,
+                    'J-tel-submit' : false
+                }
+            }
+        });
+
+    </script>
+</html>
