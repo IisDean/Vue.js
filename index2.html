@@ -1,0 +1,52 @@
+<!doctype html>
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Vue</title>
+        <meta id="wxKeywords" name="Keywords" content="<keywords />">
+        <meta id="wxDescription" name="Description" content="<description />" />
+        <meta name="apple-touch-fullscreen" content="YES" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+        <meta http-equiv="Expires" content="-1" />
+        <meta http-equiv="pragram" content="no-cache" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+        <!--本页CSS样式开始-->
+        <link rel="stylesheet" type="text/css" href="Css/index.css"/>
+    </head>
+    <body>
+
+        <div id="app">
+            <p>{{ obj }}</p>
+            <ol>
+                <todo-item
+                    v-for='item in groceryList'
+                    v-bind:todo="item"
+                    v-bind:key="item.id">
+                </todo-item>
+            </ol>
+            <div v-html='html'></div>
+            <button v-bind:id="'list-'+obj" v-bind:disabled="isButtonDisabled">确定</button>
+            <div>{{ reverseMessage }}</div>
+            <div> {{ fullName }} </div>
+            <button @click="obj += 1">按钮</button>
+            <input type="checkbox" id="checkbox" v-model="checked">
+            <label for="checkbox" style="cursor: pointer;">{{ checked }}</label>
+            <div id='example-3'>
+                <input type="checkbox" id="jack" value="Jack" v-model="checkedNames">
+                <label for="jack">Jack</label>
+                <input type="checkbox" id="john" value="John" v-model="checkedNames">
+                <label for="john">John</label>
+                <input type="checkbox" id="mike" value="Mike" v-model="checkedNames">
+                <label for="mike">Mike</label>
+                <br>
+                <span>Checked names: {{ checkedNames }}</span>
+            </div>
+        </div>
+
+    </body>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+    <script src="Js/index2.js"></script>
+</html>

@@ -1,4 +1,5 @@
 <!doctype html>
+<!doctype html>
 <html>
     <head>
         <meta charset="UTF-8">
@@ -16,7 +17,105 @@
         <link rel="stylesheet" type="text/css" href="Css/index.css"/>
     </head>
     <body>
-        
+
+
+    <div id="apple">
+
+        <my-header></my-header>
+        <div id="example-6">
+            <select v-model="selected">
+                <option v-for="option in options" v-bind:value="option.value">
+                    {{ option.text }}
+                </option>
+            </select>
+            <span>selected: {{ selected }}</span>
+        </div>
+
+
+        <p v-bind:class="classObj">{{ number }}</p>
+        <button v-bind:disabled="isHidden">{{ number }}</button>
+        <a v-if="isOk" v-bind:href="href">这里去往百度</a>
+        <p v-else>这是哩else</p>
+        <div :style="{ display: ['-webkit-box', '-ms-flexbox', 'flex'] }"></div>
+
+        <template v-if="is">
+            <p>这里是template块判断</p>
+        </template>
+        <template v-else>
+            <p>这里是template2判断</p>
+        </template>
+
+        <template v-if="loginType === 'username'">
+            <label>Username</label>
+            <input placeholder="Enter your username" key="username-input" key="username-input">
+        </template>
+        <template v-else>
+            <label>Email</label>
+            <input placeholder="Enter your email address" key="email-input" key="email-input">
+        </template>
+
+        <ul id="examp-1">
+            <li v-for="item in items">
+                {{item.message}}
+            </li>
+        </ul>
+
+        <button v-on:click="counter += 1">Add 1</button>
+        <div>{{counter}}</div>
+
+        <div v-on:click="greet('111',$event)">greet</div>
+
+        <input @keyup.ctrl.67="greet">键盘事件</input>
+
+        <button @click.ctrl.exact="greet">.exact修饰符</button>
+
+        <div style="margin: 10px auto 0;">
+            <input v-model="message" placeholder="edit me">
+            <p>Message is: {{ message }}</p>
+        </div>
+
+        <div style="margin: 10px auto 0;">
+            <span>Multiline message is:</span>
+            <p style="white-space: pre-line;">{{ textMessage }}</p>
+            <br>
+            <textarea v-model="textMessage" placeholder="add multiple lines"></textarea>
+        </div>
+
+        <input type="checkbox" id="checkbox" v-model="checked">
+        <label for="checkbox">{{ checked }}</label>
+
+        <div id="example-3">
+            <input type="checkbox" id="jack" value="jack" v-model="checkedNames" />
+            <label for="jack">jack</label>
+            <input type="checkbox" id="join" value="join" v-model="checkedNames" />
+            <label for="join">join</label>
+            <input type="checkbox" id="mike" value="mike" v-model="checkedNames" />
+            <label for="mike">mike</label>
+            <br/>
+            <span>Checked names: {{ checkedNames }}</span>
+        </div>
+
+        <div id="example-4">
+            <input type="radio" id="one" value="radioOne" v-model="radioNames" />
+            <label for="one">radioOne</label>
+            <br/>
+            <input type="radio" id="two" value="radioTwo" v-model="radioNames" />
+            <label for="two">radioTwo</label>
+            <br/>
+            <span>Picked: {{ radioNames }}</span>
+        </div>
+
+        <div id="example-5">
+            <select v-model="selected">
+                <option disabled>请选择...</option>
+                <option>A</option>
+                <option>B</option>
+                <option>C</option>
+            </select>
+            <span>Selected: {{ selected }}</span>
+        </div>
+
+    </div>
         <div id="app">
             <p>{{ reversedMessage() }}</p>
             <button v-on:click="a ++">点击</button>
@@ -24,44 +123,9 @@
             <p>Using v-html directive: <span v-html="rawHtml"></span></p>
         </div>
 
-        <div id="apple">
-            <p v-bind:class="classObj">{{ number }}</p>
-            <button v-bind:disabled="isHidden">{{ number }}</button>
-            <a v-bind:href="href">这里去往百度</a>
-        </div>
 
     </div>
     </body>
     <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
-    <script type="text/javascript">
-        
-        var obj = {
-            message : 'hello',
-            rawHtml : "<span style='color: red;'>你好啊</span>",
-        };
-        var vm = new Vue({
-            el : '#app',
-            data : obj,
-            methods: {
-                reversedMessage : function () {
-                    // `this` 指向 vm 实例
-                    return this.message.split('').reverse().join('');
-                }
-            }
-        });
-
-        var vm2 = new Vue({
-            el : '#apple',
-            data : {
-                isHidden : true,
-                number : 1,
-                href : 'https:www.baidu.com',
-                classObj : {
-                    active : true,
-                    'J-tel-submit' : false
-                }
-            }
-        });
-
-    </script>
+    <script src="Js/index.js"></script>
 </html>
