@@ -44,8 +44,28 @@
                 <br>
                 <span>Checked names: {{ checkedNames }}</span>
             </div>
-        </div>
+            <button-counter></button-counter>
+            <button-counter></button-counter>
+            <button-counter></button-counter>
 
+            <blog-post title="who is shabi"></blog-post>
+            <blog-post title="who is Batman"></blog-post>
+            <blog-post title="who is jeok"></blog-post>
+            <blog-post v-for="ports in groceryList"
+                       v-bind:key="ports.id"
+                       v-bind:title="ports.text">
+            </blog-post>
+
+        </div>
+        <div id="blog-posts-events-demo">
+            <div :style="{ fontSize: postFontSize + 'em' }">
+                <blog-post v-on:enlarge-text="postFontSize += $event"
+                  v-for="post in posts"
+                  v-bind:key="post.id"
+                  v-bind:post="post"
+                ></blog-post>
+            </div>
+        </div>
     </body>
     <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
     <script src="Js/index2.js"></script>
